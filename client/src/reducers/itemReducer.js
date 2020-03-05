@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from "uuid";
-import { GET_ITEMS } from "../actions/types";
 import { GET_ITEMS, ADD_ITEM, DELETE_ITEM } from "../actions/types";
 
 const initialState = {
@@ -7,7 +6,7 @@ const initialState = {
     { id: uuidv4(), name: "Eggs" },
     { id: uuidv4(), name: "Milk" },
     { id: uuidv4(), name: "Steak" },
-    { id: uuidv4(), name: "Water" }
+    { id: uuidv4(), name: "Candy" }
   ]
 };
 
@@ -16,6 +15,11 @@ export default function(state = initialState, action) {
     case GET_ITEMS:
       return {
         ...state
+      };
+    case DELETE_ITEM:
+      return {
+        ...state,
+        items: state.items.filter(item => item.id !== action.payload)
       };
     default:
       return state;
