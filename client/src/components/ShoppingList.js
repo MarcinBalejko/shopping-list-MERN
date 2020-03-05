@@ -3,7 +3,7 @@ import { Container, ListGroup, ListGroupItem, Button } from "reactstrap";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { v4 as uuidv4 } from "uuid";
 import { connect } from "react-redux";
-import { getItems } from "../actions/ItemActions";
+import { getItems } from "../actions/itemActions";
 import PropTypes from "prop-types";
 
 class ShoppingList extends Component {
