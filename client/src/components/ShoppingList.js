@@ -2,17 +2,11 @@ import React, { Component } from "react";
 import { Container, ListGroup, ListGroupItem, Button } from "reactstrap";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { v4 as uuidv4 } from "uuid";
+import { connect } from "react-redux";
+import { getItems } from "../actions/ItemActions";
+import PropTypes from "prop-types";
 
 class ShoppingList extends Component {
-  state = {
-    items: [
-      { id: uuidv4(), name: "Eggs" },
-      { id: uuidv4(), name: "Milk" },
-      { id: uuidv4(), name: "Steak" },
-      { id: uuidv4(), name: "Water" }
-    ]
-  };
-
   render() {
     const { items } = this.state;
     return (
@@ -61,4 +55,13 @@ class ShoppingList extends Component {
   }
 }
 
-export default ShoppingList;
+ShoppingList.PropTypes = {
+  getItems: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  item: state.item
+});
+
+export default connect(mapStateToProps, { getItems })(ShoppingList);
