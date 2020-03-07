@@ -10,7 +10,6 @@ dotenv.config();
 
 const app = express();
 
-// Bodyparser Middleware
 app.use(bodyParser.json());
 
 // DB Config
