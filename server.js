@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
+const PORT = process.env.PORT || 5000;
 const path = require("path");
 
 const items = require("./routes/api/items");
@@ -36,6 +37,4 @@ if (process.env.NODE_ENV == "production") {
 
 // const port = process.env.PORT || 5000;
 
-app.listen(process.env.PORT || 5000, () =>
-  console.log("Server up and running")
-);
+app.listen(PORT, "0.0.0.0", () => console.log("Server up and running"));
