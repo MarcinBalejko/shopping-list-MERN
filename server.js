@@ -1,6 +1,5 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const PORT = process.env.PORT || 5000;
 const path = require("path");
@@ -9,7 +8,7 @@ dotenv.config();
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 // DB Config
 const db = require("./config/keys").mongoURI;
