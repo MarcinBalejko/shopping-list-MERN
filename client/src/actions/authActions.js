@@ -33,7 +33,7 @@ export const loadUser = () => (dispatch, getState) => {
     });
 };
 
-// Set up config/ headers and token
+// Set up config/headers and token
 export const tokenConfig = getState => {
   // Get token from localstorage
   const token = getState().auth.token;
