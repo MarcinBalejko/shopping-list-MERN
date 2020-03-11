@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-const config = require("config");
+const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken");
+
+dotenv.config();
 
 // User Model
 const User = require("../../models/User");
@@ -33,7 +35,7 @@ router.post("/", (req, res) => {
         if (err) throw err;
         newUser.password = hash;
         newUser.save().then(user => {
-          jwt.sign({ id: user.id }, config.get("jwtSecret"), (err, token) => {
+          jwt.sign({ id: user.id }, process.env.JWT_SECRET, (err, token) => {
             if (err) throw err;
 
             res.json({
