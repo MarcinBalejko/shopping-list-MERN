@@ -34,7 +34,7 @@ class LoginModal extends Component {
   componentDidUpdate(prevProps) {
     const { error, isAuthenticated } = this.props;
     if (error !== prevProps.error) {
-      // Check for register error
+      // Check for login error
       if (error.id === "LOGIN_FAIL") {
         this.setState({ msg: error.msg.msg });
       } else {
@@ -64,6 +64,16 @@ class LoginModal extends Component {
 
   onSubmit = e => {
     e.preventDefault();
+
+    const { email, password } = this.state;
+
+    const user = {
+      email,
+      password
+    };
+
+    // Attempt to login
+    this.props.login(user);
   };
 
   render() {
